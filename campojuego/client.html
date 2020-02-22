@@ -37,8 +37,40 @@
                 function movePlayer(command){
                     console.log(`Moving ${command.playerId} with ${command.keyPressed}`)
 
+                    const acceptedMoves = {
+                        ArrowUp(player) {
+                            console.log('Moving player up')
+                            if (player.y - 1 >=0) {
+                                player.y = player.y -1
+                            }
+                        },
+                        ArrowRight(player) {
+                            console.log('Moving player right')
+                            if (player.x + 1 < screen.width) {
+                                player.x = player.x + 1
+                            }
+                        },
+                        ArrowLeft(player) {
+                            console.log('Moving player left')
+                            if (player.x - 1 >=0) {
+                                player.x = player.x -1
+                            }
+                        },
+                        ArrowDown(player) {
+                            console.log('Moving player down')
+                            if (player.y + 1 < screen.height) {
+                                player.y = player.y + 1
+                            }
+                        }
+                    }
+
                     const keyPressed = command.keyPressed
                     const player = state.players[command.playerId]
+                    const moveFunction = acceptedMoves[keyPressed]
+                    if (moveFunction){
+                        moveFunction(player)
+                    }
+                    return // TEMP
 
                     if (keyPressed === 'ArrowUp' && player.y - 1 >=0) {
 
@@ -70,7 +102,7 @@
             const keyboardListener = createKeyboardListener()
             keyboardListener.subscribe(game.movePlayer)
 
-            function createKeyboardListener() {
+            function createKeyboardListener() { 
                 const state = {
                     observers: []
                 }
