@@ -18,7 +18,7 @@ game.movePlayer({playerId: 'player1', keyPressed: 'ArrowDown'})
 
 console.log(game.state)
 
-sockets.on('conection', (socket) => {
+sockets.on('connection', (socket) => {
     const playerId = socket.id
     console.log(`> Player connected on server with id: ${playerId}`)
 
