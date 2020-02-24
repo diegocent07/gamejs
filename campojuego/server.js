@@ -10,11 +10,6 @@ const sockets = socketio(server)
 app.use(express.static('public'))
 
 const game = createGame()
-game.addPlayer({ playerId: 'player1', playerX: 0, playerY: 0})
-game.addPlayer({ playerId: 'player2', playerX: 2, playerY: 0})
-game.addFruit({ fruitId: 'fruit1', fruitX: 3, fruitY: 3})
-game.addFruit({ fruitId: 'fruit2', fruitX: 6, fruitY: 4})
-game.movePlayer({playerId: 'player1', keyPressed: 'ArrowDown'})
 
 console.log(game.state)
 
